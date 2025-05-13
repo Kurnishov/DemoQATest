@@ -24,5 +24,10 @@ namespace DemoQATest.Tests
             Driver.Quit();
             Driver.Dispose();
         }
+        
+        protected void NavigateToUrl(string url)
+        {
+            Driver.Navigate().GoToUrl(url);
+        }
     }
 }

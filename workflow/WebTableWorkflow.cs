@@ -1,3 +1,4 @@
+using DemoQATest.helpers;
 using DemoQATest.pom;
 using OpenQA.Selenium;
 
@@ -16,6 +17,7 @@ public class WebTableWorkflow(IWebDriver driver)
         _webTablesPage.SetAge(age);
         _webTablesPage.SetSalary(salary);
         _webTablesPage.SetDepartment(department);
+        Screenshoter.TakeScreenshot();
         _webTablesPage.Submit();
     }
 
@@ -23,14 +25,14 @@ public class WebTableWorkflow(IWebDriver driver)
     {
         _webTablesPage.ClickEditButton(name);
         _webTablesPage.SetSalary(salary);
+        Screenshoter.TakeScreenshot();
         _webTablesPage.Submit();
     }
 
     public void DeleteRowByName(string name)
     {
-        if (_webTablesPage.GetRowByName(name) != null)
-        {
-            _webTablesPage.ClickDeleteButton(name);
-        }
+        if (_webTablesPage.GetRowByName(name) == null) return;
+        _webTablesPage.ClickDeleteButton(name);
+        Screenshoter.TakeScreenshot();
     }
 }

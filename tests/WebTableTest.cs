@@ -9,9 +9,7 @@ namespace DemoQATest.Tests
         [Fact]
         public void TestAddEditDeleteWebTableRow()
         {
-            var workflow = new WebTableWorkflow(Driver);
-            Driver.Navigate().GoToUrl("https://demoqa.com/webtables");
-            
+            const string site = "https://demoqa.com/webtables";
             const string firstName = "Oleksandr";
             const string lastName = "Kurnishov";
             const string email = "a.kurnishov@gmail.com";
@@ -20,17 +18,22 @@ namespace DemoQATest.Tests
             const string updatedSalary = "123456";
             const string department = "Engineering";
             
+            var workflow = new WebTableWorkflow(Driver);
+            
+            // Navigate to site
+            NavigateToUrl(site);
+            
             // Add new record
             workflow.AddNewRecord(firstName, lastName, email, age, salary, department);
 
-            // Verify added
+            // Verify record added
             Assert.Contains(firstName, WaitForTableRowData(firstName));
 
-            // Edit row
+            // Edit record
             workflow.EditSalaryByName(firstName, updatedSalary);
             Assert.Contains(updatedSalary, WaitForTableRowData(updatedSalary));
             
-            // Delete row
+            // Delete record
             workflow.DeleteRowByName(firstName);
             Assert.False(WaitForTableRowDeletion(firstName));
         }
