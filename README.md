@@ -53,4 +53,4 @@ DemoQATest/
 	2.	Open the project in Rider or Visual Studio.
 	3.	Restore NuGet packages (Rider will prompt this or you can run dotnet restore).
 	4.	Run the test from the Test Explorer or using the command: dotnet test
-  5.	Screenshots will be saved in the DemoQATest/bin/Debug/net9.0/Screenshots directory automatically after each step.
+  	5.	Screenshots will be saved in the DemoQATest/bin/Debug/net9.0/Screenshots directory automatically after each step.
