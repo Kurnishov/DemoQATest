@@ -29,11 +29,10 @@ namespace DemoQATest.Tests
             // Edit row
             workflow.EditSalaryByName(firstName, updatedSalary);
             Assert.Contains(updatedSalary, WaitForTableRowData(updatedSalary));
-
+            
             // Delete row
-            //workflow.DeleteRowByName(name);
-            //WaitHelpers.WaitForTableRowDeletion(Driver, name);
-            //Assert.DoesNotContain(name, Driver.PageSource);
+            workflow.DeleteRowByName(firstName);
+            Assert.False(WaitForTableRowDeletion(firstName));
         }
     }
 }

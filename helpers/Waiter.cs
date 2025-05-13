@@ -17,11 +17,13 @@ public class Waiter
         });
     }
 
-    public static void WaitForTableRowDeletion(IWebDriver driver, string name, TimeSpan? timeout = null)
+    public static bool WaitForTableRowDeletion(string name, TimeSpan? timeout = null)
     {
-        var wait = new WebDriverWait(driver, timeout ?? TimeSpan.FromSeconds(10));
+        var wait = new WebDriverWait(DriverContext.Driver, timeout ?? TimeSpan.FromSeconds(10));
         wait.Until(d =>
             !d.FindElements(By.CssSelector(".rt-tr-group"))
                 .Any(row => row.Text.Contains(name)));
+
+        return false;
     }
 }

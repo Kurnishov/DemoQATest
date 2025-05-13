@@ -25,4 +25,12 @@ public class WebTableWorkflow(IWebDriver driver)
         _webTablesPage.SetSalary(salary);
         _webTablesPage.Submit();
     }
+
+    public void DeleteRowByName(string name)
+    {
+        if (_webTablesPage.GetRowByName(name) != null)
+        {
+            _webTablesPage.ClickDeleteButton(name);
+        }
+    }
 }
