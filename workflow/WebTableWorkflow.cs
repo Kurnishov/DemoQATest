@@ -18,4 +18,11 @@ public class WebTableWorkflow(IWebDriver driver)
         _webTablesPage.SetDepartment(department);
         _webTablesPage.Submit();
     }
+
+    public void EditSalaryByName(string name, string salary)
+    {
+        _webTablesPage.ClickEditButton(name);
+        _webTablesPage.SetSalary(salary);
+        _webTablesPage.Submit();
+    }
 }

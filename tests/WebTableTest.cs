@@ -1,5 +1,6 @@
 using DemoQATest.workflow;
 using Xunit;
+using static DemoQATest.helpers.Waiter;
 
 namespace DemoQATest.Tests
 {
@@ -10,21 +11,24 @@ namespace DemoQATest.Tests
         {
             var workflow = new WebTableWorkflow(Driver);
             Driver.Navigate().GoToUrl("https://demoqa.com/webtables");
-
-            // string name = "John";
-            // string updatedSalary = "123456";
-
-            // Add new row
-            workflow.AddNewRecord("Oleksandr", "Kurnishov", "a.kurnishov@gmail.com", "37", "100000", "Engineering");
+            
+            const string firstName = "Oleksandr";
+            const string lastName = "Kurnishov";
+            const string email = "a.kurnishov@gmail.com";
+            const string age = "37";
+            const string salary = "100000";
+            const string updatedSalary = "123456";
+            const string department = "Engineering";
+            
+            // Add new record
+            workflow.AddNewRecord(firstName, lastName, email, age, salary, department);
 
             // Verify added
-            //WaitHelpers.WaitForTableRowData(Driver, name);
-            //Assert.Contains(name, Driver.PageSource);
+            Assert.Contains(firstName, WaitForTableRowData(firstName));
 
             // Edit row
-            //workflow.EditSalaryByName(name, updatedSalary);
-            //WaitHelpers.WaitForTableRowData(Driver, updatedSalary);
-            //Assert.Contains(updatedSalary, Driver.PageSource);
+            workflow.EditSalaryByName(firstName, updatedSalary);
+            Assert.Contains(updatedSalary, WaitForTableRowData(updatedSalary));
 
             // Delete row
             //workflow.DeleteRowByName(name);

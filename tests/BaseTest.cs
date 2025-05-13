@@ -1,3 +1,4 @@
+using DemoQATest.config;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -14,6 +15,7 @@ namespace DemoQATest.Tests
             // options.AddArgument("--headless");
 
             Driver = new ChromeDriver(options);
+            DriverContext.Driver = Driver;
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
