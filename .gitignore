@@ -3,3 +3,8 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+/.idea/.idea.DemoQATest/.idea/.gitignore
+/DemoQATest.sln.DotSettings.user
+/.idea/.idea.DemoQATest/.idea/encodings.xml
+/.idea/.idea.DemoQATest/.idea/indexLayout.xml
+/.idea/.idea.DemoQATest/.idea/vcs.xml
